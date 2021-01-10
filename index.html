@@ -24,9 +24,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-linkify/2.1.9/linkify.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jQuery-linkify/2.1.9/linkify-jquery.min.js"></script>
 <script>
-
+function parseUsername(string) {
+    return string.replace(/[@]+[A-Za-z0-9-_]+/g, function(u){
+        var username=u.replace("@","");
+        return u.link("https://twitter.com/"+username);
+    });
+};
 function showTweet(tweet){
-  text = tweet['text'];
+  text = parseUsername(tweet['text']);
   tweetID=tweet['id'];
   dateObj = new Date(tweet['date']);
   time = dateObj.toLocaleTimeString('en-US', {hour:'numeric', minute:'numeric'});
