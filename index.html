@@ -27,7 +27,7 @@
 function parseUsername(string) {
     return string.replace(/[@]+[A-Za-z0-9-_]+/g, function(u){
         var username=u.replace("@","");
-        return u.link("https://twitter.com/"+username);
+        return '<a href="https://twitter.com/'+username+'" style="text-decoration:none;">'+u+'</a>';
     });
 };
 function showTweet(tweet){
